@@ -4,6 +4,7 @@
     <list default="true" id="d3bfb114-47de-43e0-ba6c-b000de5b8d2b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FileHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/FileHandler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.py" beforeDir="false" afterPath="$PROJECT_DIR$/User.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/csv_files/User.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv_files/User.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -48,7 +49,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.User">
+  <component name="RunManager" selected="Python.FileHandler">
     <configuration name="FileHandler" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Car Lot Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -93,8 +94,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.User" />
         <item itemvalue="Python.FileHandler" />
+        <item itemvalue="Python.User" />
       </list>
     </recent_temporary>
   </component>

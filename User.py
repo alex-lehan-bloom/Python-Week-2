@@ -1,7 +1,6 @@
 from FileHandler import FileHandler
 
 class User:
-
     def user_auth(self, name, password):
         try:
             self.validate_argument_is_string(name, password)
