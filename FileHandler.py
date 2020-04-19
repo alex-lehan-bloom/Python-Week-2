@@ -8,13 +8,15 @@ class FileHandler:
             csv_file = open(file_name, "r", newline='')
         except FileNotFoundError:
             print("Error: File not found: '{}'.".format(file_name))
+        except IOError:
+            print("Could not read file", file_name)
         except Exception as e:
             print(e)
             print("Error: An unknown error occurred.")
         else:
             reader = csv.DictReader(csv_file)
-            for row in reader:
-                print(row)
+            return reader
+
 
 my_file_handler = FileHandler()
 my_file_handler.load_from_csv("csv_files/User.csv")
