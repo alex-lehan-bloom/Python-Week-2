@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d3bfb114-47de-43e0-ba6c-b000de5b8d2b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/FileHandler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.py" beforeDir="false" afterPath="$PROJECT_DIR$/User.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csv_files/User.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv_files/User.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diagram/UML For CarLot Project.epgz" beforeDir="false" afterPath="$PROJECT_DIR$/diagram/UML For CarLot Project.epgz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diagram/UML For CarLot Project.png" beforeDir="false" afterPath="$PROJECT_DIR$/diagram/UML For CarLot Project.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +48,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.FileHandler">
+  <component name="RunManager" selected="Python.logger">
     <configuration name="FileHandler" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Car Lot Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -92,8 +91,30 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="logger" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Car Lot Project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/logger.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.logger" />
         <item itemvalue="Python.FileHandler" />
         <item itemvalue="Python.User" />
       </list>
