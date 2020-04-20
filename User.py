@@ -13,7 +13,7 @@ class User:
         user_exists = False
         for row in users:
             print(row)
-            if row['first'].lower() == user_name[0].lower() and row['last'].lower() == user_name[1].lower() and row['password'] == password:
+            if row['first']== user_name[0] and row['last'] == user_name[1] and row['password'] == password:
                 user_exists = row['role']
         return user_exists
 

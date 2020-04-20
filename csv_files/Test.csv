@@ -1,4 +1,5 @@
 user_id,first,last,password,position,salary,role
 1,Alex,Bloom,passwd123,Owner,500000,Owner
-2,Alex,Alex,Test,Sad,10000,SAeA
+2,David,Bador,test213,Worker,50000,Attendant
 3,Alex,Alex,Test,Sad,10000,SAeA
+4,Alex,Alex,Test,Sad,10000,SAeA
