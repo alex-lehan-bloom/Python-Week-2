@@ -8,6 +8,7 @@ class Logger():
         self.name = log_file_name
 
     def add_to_log(self, msg):
+        self.__delete_files_older_than_24_hours()
         date = datetime.now()
         self.create_dir_path()
         f = self.open_log_file()
@@ -58,9 +59,19 @@ class Logger():
 
     def list_dir_items(self):
         dir_items = os.listdir(self.dir_path)
-        dir_items = sorted(dir_items, key=lambda date: datetime.strptime(date, "log_file.%y-%m-%Y-%H-%M-%S.txt"),
-                           reverse=False)
+        dir_items = sorted(dir_items, key=lambda date: datetime.strptime(date, "log_file.%y-%m-%Y-%H-%M-%S.txt"),reverse=False)
         return dir_items
+
+    def __delete_files_older_than_24_hours(self):
+        files_in_log_directory = self.list_dir_items()
+        for file in files_in_log_directory:
+            time_file_created = file.split(".")[1]
+            difference_between_create_time_and_now = datetime.now() - datetime.strptime(time_file_created, "%d-%m-%Y-%H-%M-%S")
+            difference_hours = difference_between_create_time_and_now.seconds / 3600
+            if difference_hours > 24:
+                os.remove("{}\\{}".format(self.dir_path, file))
+
+
 
 
 log = Logger("logs", "log_file.txt")
