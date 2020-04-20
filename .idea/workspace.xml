@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d3bfb114-47de-43e0-ba6c-b000de5b8d2b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diagram/UML For CarLot Project.epgz" beforeDir="false" afterPath="$PROJECT_DIR$/diagram/UML For CarLot Project.epgz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diagram/UML For CarLot Project.png" beforeDir="false" afterPath="$PROJECT_DIR$/diagram/UML For CarLot Project.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/logger.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +32,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Day 1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
