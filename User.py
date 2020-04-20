@@ -12,6 +12,7 @@ class User:
         user_name = name.split()
         user_exists = False
         for row in users:
+            print(row)
             if row['first'].lower() == user_name[0].lower() and row['last'].lower() == user_name[1].lower() and row['password'] == password:
                 user_exists = row['role']
         return user_exists
@@ -24,7 +25,7 @@ class User:
 
 
 user1 = User()
-exists = user1.user_auth("alex dames", "passwd123")
+exists = user1.user_auth("alex bloom", "passwd123")
 print(exists)
 
 
