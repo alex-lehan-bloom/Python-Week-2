@@ -18,20 +18,6 @@ def get_csv_headers(file_name):
         csv_file.close()
         return headers
 
-def get_num_rows(file_name):
-    try:
-        csv_file = open(file_name, "r", newline='')
-    except FileNotFoundError:
-        print("Error: File not found: '{}'.".format(file_name))
-    except IOError:
-        print("Error: Could not read file: '{}'.".format(file_name))
-    except Exception as e:
-        print(e)
-        print("Error: An unknown error occurred.")
-    else:
-        file_contents = csv.DictReader(csv_file)
-        return len(list(file_contents))
-
 
 class FileHandler:
     def load_from_csv(self, file_name):
@@ -64,7 +50,7 @@ class FileHandler:
         else:
             csv_writer = csv.DictWriter(csv_file, fieldnames=get_csv_headers(file_name))
             print(file_name)
-            id = get_num_rows(file_name) + 1
+            id = self.get_num_rows(file_name) + 1
             try:
                 data_to_add_to_csv['id'] = id
             except Exception as e:
@@ -154,6 +140,23 @@ class FileHandler:
                 return True
         else:
             return False
+
+    def get_num_rows(self, file_name):
+        try:
+            csv_file = open(file_name, "r", newline='')
+        except FileNotFoundError:
+            print("Error: File not found: '{}'.".format(file_name))
+            return False
+        except IOError:
+            print("Error: Could not read file: '{}'.".format(file_name))
+            return False
+        except Exception as e:
+            print(e)
+            print("Error: An unknown error occurred.")
+            return False
+        else:
+            file_contents = csv.DictReader(csv_file)
+            return len(list(file_contents))
 
 
 

@@ -1,19 +1,32 @@
 from FileHandler import FileHandler
+from Logger import Logger
+
+logger = Logger("logs", "log_file.txt")
+vehicles_db = FileHandler()
+user_db = FileHandler()
+
 
 class CarLot:
+
     def add_to_fleet(self, vehicle):
-        vehicles_db = FileHandler()
         # vehicles = vehicles_db.load_from_csv("csv_files/Vehicles.csv")
         add_vehicle = vehicles_db.append_to_csv("csv_files//Vehicles.csv", vehicle)
         if add_vehicle == True:
+            logger.add_to_log("New vehicle added to Vehicle.csv")
             print("The vehicle was successfully added.")
             return True
         else:
             False
 
+    def get_fleet_size(self):
+        size = vehicles_db.get_num_rows("csv_files/Vehicles.csv")
+        if size == False:
+            return False
+        else:
+            print("The size of the fleet is {}".format(size))
+            return True
 
     def update_salary_by_name(self, csv_file, name, new_salary):
-        user_db = FileHandler()
         users = user_db.load_from_csv(csv_file)
         user_exists = False
         user_id = None
@@ -35,5 +48,6 @@ class CarLot:
 my_car_lot = CarLot()
 # my_car_lot.update_salary_by_name("csv_files/User.csv", "Alex Bloom", 8000)
 vehicle_to_add = {'owner': 'Ruthy Lewis','brand': 'Toyota','color': 'Yellow','door_count': 4,'last_test': '5-07-1992'}
-my_car_lot.add_to_fleet(vehicle_to_add)
+# my_car_lot.add_to_fleet(vehicle_to_add)
+my_car_lot.get_fleet_size()
 

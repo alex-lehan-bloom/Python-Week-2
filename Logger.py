@@ -78,6 +78,6 @@ class Logger:
 
 
 
-log = Logger("logs", "log_file.txt")
-log.add_to_log("My new log message")
+# log = Logger("logs", "log_file.txt")
+# log.add_to_log("My new log message")
 
