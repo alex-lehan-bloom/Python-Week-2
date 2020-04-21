@@ -2,10 +2,18 @@ from datetime import datetime
 import os
 
 
-class Logger():
+def how_long_has_file_existed(log_file):
+    time_file_created = log_file.split(".")[1]
+    time_since_file_created = datetime.now() - datetime.strptime(time_file_created, "%d-%m-%Y-%H-%M-%S")
+    time_since_file_created_hours = time_since_file_created.seconds / 3600
+    return time_since_file_created_hours
+
+
+class Logger:
     def __init__(self, path_to_log_file, log_file_name):
         self.dir_path = path_to_log_file
         self.name = log_file_name
+        self.new_file_name = None
 
     def add_to_log(self, msg):
         self.__delete_files_older_than_24_hours()
@@ -18,26 +26,24 @@ class Logger():
             print(e)
             print("Error: Could not write to file.")
         else:
-            print("Successfully created new log entry at {}".format(self.dir_path))
+            print("Successfully created new log entry at {}".format(self.new_file_name))
         f.close()
 
     def open_log_file(self):
-        date = datetime.now()
         files_in_log_directory = self.list_dir_items()
         # If directory is empty, create a new file
         if not files_in_log_directory:
-            file_path = self.generate_new_log_file_name()
+            self.new_file_name = self.generate_new_log_file_name()
         # If there is a log file, use the existng log file if it was created within the hour. Otherwise, create a new log file.
         else:
             newest_log_file = files_in_log_directory[-1]
-            time_newest_log_file_created = newest_log_file.split(".")[1]
-            time_newest_log_file_created = datetime.strptime(time_newest_log_file_created, "%d-%m-%Y-%H-%M-%S")
-            if date.hour - time_newest_log_file_created.hour > 1:
-                file_path = self.generate_new_log_file_name()
+            file_create_time = how_long_has_file_existed(newest_log_file)
+            if file_create_time > 1:
+                self.new_file_name = self.generate_new_log_file_name()
             else:
-                file_path = "{}\\{}".format(self.dir_path, newest_log_file)
+                self.new_file_name = "{}\\{}".format(self.dir_path, newest_log_file)
         try:
-            f = open(file_path, "a+")
+            f = open(self.new_file_name, "a+")
         except OSError as e:
             print("Error:", e.strerror)
         except Exception as e:
@@ -52,7 +58,7 @@ class Logger():
     def generate_new_log_file_name(self):
         date = datetime.now()
         new_name = self.name.split(".")
-        new_name.insert(1, date.strftime("%y-%m-%Y-%H-%M-%S"))
+        new_name.insert(1, date.strftime("%d-%m-%Y-%H-%M-%S"))
         new_name = ".".join(new_name)
         file_path = "{}\\{}".format(self.dir_path, new_name)
         return file_path
@@ -65,10 +71,8 @@ class Logger():
     def __delete_files_older_than_24_hours(self):
         files_in_log_directory = self.list_dir_items()
         for file in files_in_log_directory:
-            time_file_created = file.split(".")[1]
-            difference_between_create_time_and_now = datetime.now() - datetime.strptime(time_file_created, "%d-%m-%Y-%H-%M-%S")
-            difference_hours = difference_between_create_time_and_now.seconds / 3600
-            if difference_hours > 24:
+            time_since_file_created = how_long_has_file_existed(file)
+            if time_since_file_created > 24:
                 os.remove("{}\\{}".format(self.dir_path, file))
 
 
@@ -76,3 +80,4 @@ class Logger():
 
 log = Logger("logs", "log_file.txt")
 log.add_to_log("My new log message")
+
