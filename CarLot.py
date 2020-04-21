@@ -1,6 +1,17 @@
 from FileHandler import FileHandler
 
 class CarLot:
+    def add_to_fleet(self, vehicle):
+        vehicles_db = FileHandler()
+        # vehicles = vehicles_db.load_from_csv("csv_files/Vehicles.csv")
+        add_vehicle = vehicles_db.append_to_csv("csv_files//Vehicles.csv", vehicle)
+        if add_vehicle == True:
+            print("The vehicle was successfully added.")
+            return True
+        else:
+            False
+
+
     def update_salary_by_name(self, csv_file, name, new_salary):
         user_db = FileHandler()
         users = user_db.load_from_csv(csv_file)
@@ -22,5 +33,7 @@ class CarLot:
             return True
 
 my_car_lot = CarLot()
-my_car_lot.update_salary_by_name("csv_files/User.csv", "Alex Bloom", 8000)
+# my_car_lot.update_salary_by_name("csv_files/User.csv", "Alex Bloom", 8000)
+vehicle_to_add = {'owner': 'Ruthy Lewis','brand': 'Toyota','color': 'Yellow','door_count': 4,'last_test': '5-07-1992'}
+my_car_lot.add_to_fleet(vehicle_to_add)
 
