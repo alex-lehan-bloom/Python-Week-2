@@ -67,7 +67,6 @@ class FileHandler:
         new_file_contents = []
         id_exists = False
         for line in file_contents:
-            print(line['user_id'])
             if line['user_id'] != id:
                 new_file_contents.append(line)
             else:
@@ -77,7 +76,6 @@ class FileHandler:
                 line['user_id'] = id
                 line = OrderedDict(line.items())
                 new_file_contents.append(line)
-        print(new_file_contents)
         headers = get_csv_headers(file_name)
         if id_exists == True:
             headers = get_csv_headers(file_name)
