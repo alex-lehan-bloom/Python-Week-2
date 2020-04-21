@@ -26,6 +26,10 @@ class CarLot:
             print("The size of the fleet is {}".format(size))
             return True
 
+    def get_fleet_size_by_brand(self, brand):
+        count = vehicles_db.get_num_rows_matching_search_criteria("csv_files/Vehicles.csv", 'brand', brand)
+        return count
+
     def update_salary_by_name(self, csv_file, name, new_salary):
         users = user_db.load_from_csv(csv_file)
         user_exists = False
@@ -49,5 +53,6 @@ my_car_lot = CarLot()
 # my_car_lot.update_salary_by_name("csv_files/User.csv", "Alex Bloom", 8000)
 vehicle_to_add = {'owner': 'Ruthy Lewis','brand': 'Toyota','color': 'Yellow','door_count': 4,'last_test': '5-07-1992'}
 # my_car_lot.add_to_fleet(vehicle_to_add)
-my_car_lot.get_fleet_size()
+# my_car_lot.get_fleet_size()
+print(my_car_lot.get_fleet_size_by_brand("toyota"))
 

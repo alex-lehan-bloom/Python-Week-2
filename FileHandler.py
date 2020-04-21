@@ -158,6 +158,24 @@ class FileHandler:
             file_contents = csv.DictReader(csv_file)
             return len(list(file_contents))
 
+    def get_num_rows_matching_search_criteria(self, file_name, field, search_criteria):
+        header_exists = False
+        headers = get_csv_headers(file_name)
+        for i in headers:
+            if i == field:
+                header_exists = True
+        if not header_exists:
+            print("The '{}' field doesn't exist in the '{}' file.".format(field, file_name))
+            return False
+        file_contents = self.load_from_csv(file_name)
+        count = 0
+        for line in file_contents:
+            if line[field].lower() == search_criteria.lower():
+                count += 1
+        return count
+
+
+
 
 
 
