@@ -74,10 +74,3 @@ class Logger:
             time_since_file_created = how_long_has_file_existed(file)
             if time_since_file_created > 24:
                 os.remove("{}\\{}".format(self.dir_path, file))
-
-
-
-
-# log = Logger("logs", "log_file.txt")
-# log.add_to_log("My new log message")
-
