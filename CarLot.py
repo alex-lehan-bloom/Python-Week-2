@@ -30,6 +30,10 @@ class CarLot:
         count = vehicles_db.get_num_rows_matching_search_criteria("csv_files/Vehicles.csv", 'brand', brand)
         return count
 
+    def get_cars_by_filter(self,and_or='and',**kwargs):
+        
+        pass
+
     def update_salary_by_name(self, csv_file, name, new_salary):
         users = user_db.load_from_csv(csv_file)
         user_exists = False

@@ -1,7 +1,6 @@
 import csv
 from collections import OrderedDict
 
-
 def get_csv_headers(file_name):
     try:
         csv_file = open(file_name, "r", newline='')
@@ -17,8 +16,7 @@ def get_csv_headers(file_name):
         headers = next(file_contents).keys()
         csv_file.close()
         return headers
-
-
+    
 class FileHandler:
     def load_from_csv(self, file_name):
         try:
@@ -174,6 +172,32 @@ class FileHandler:
         return count
 
 
+    def get_rows_matching_search_criteria(self, file_name, and_or='and', **kwargs):
+        file_contents = self.load_from_csv(file_name)
+        lines_matching_search =[]
+        for line in file_contents:
+            if and_or.lower() == 'or':
+                for key in kwargs:
+                    if line[key] == kwargs[key]:
+                        lines_matching_search.append(line)
+            if and_or.lower() == 'and':
+                matches = True
+                for key in kwargs:
+                    if line[key] != kwargs[key]:
+                        matches = False
+                if matches == True:
+                    lines_matching_search.append(line)
+        if len(lines_matching_search) == 0:
+            return False
+        else:
+            return lines_matching_search
+
+
+
+
+
+
+
 
 
 
@@ -182,4 +206,5 @@ new_row = {'first': "New_first_name", 'last': "new_last_name"}
 my_file_handler = FileHandler()
 # field_names = get_csv_headers("csv_files/Test.csv")
 # # print(my_file_handler.remove_from_csv("csv_files/Test.csv", '2'))
-my_file_handler.update_csv("csv_files/Test.csv", '5', new_row)
+# my_file_handler.update_csv("csv_files/Test.csv", '5', new_row)
+my_file_handler.get_rows_matching_search_criteria("csv_files/Test.csv", 'and', first='Jim', last='Alex')
