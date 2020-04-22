@@ -49,7 +49,6 @@ class FileHandler:
             return False
         else:
             csv_writer = csv.DictWriter(csv_file, fieldnames=get_csv_headers(file_name))
-            print(file_name)
             id = self.get_num_rows(file_name) + 1
             try:
                 data_to_add_to_csv['id'] = id
@@ -75,9 +74,8 @@ class FileHandler:
                 new_file_contents.append(line)
             else:
                 id_exists = True
-                id = line['id']
-                line = updated_info
-                line['id'] = id
+                for key in updated_info:
+                    line[key] = updated_info[key]
                 line = OrderedDict(line.items())
                 new_file_contents.append(line)
         headers = get_csv_headers(file_name)
@@ -100,6 +98,7 @@ class FileHandler:
                     try:
                         csv_writer.writerow(line)
                     except Exception as e:
+                        print(e)
                         print(
                             "Error: A key in your 'data_to_add_to_csv' dictionary doesn't exist in the '{}' database".format(
                                 file_name))
@@ -179,9 +178,8 @@ class FileHandler:
 
 
 
-# new_row = {'first': "KASKDKAS", 'last': "Alex", 'password': "Test", 'position': "Sad", 'salary': 10000,
-#            'role': "SAeA"}
-# my_file_handler = FileHandler()
+new_row = {'first': "New_first_name", 'last': "new_last_name"}
+my_file_handler = FileHandler()
 # field_names = get_csv_headers("csv_files/Test.csv")
 # # print(my_file_handler.remove_from_csv("csv_files/Test.csv", '2'))
-# my_file_handler.update_csv("csv_files/Test.csv", '5', new_row)
+my_file_handler.update_csv("csv_files/Test.csv", '5', new_row)
