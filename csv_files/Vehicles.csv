@@ -1,9 +1,11 @@
 id,owner,brand,color,door_count,last_test
-1, Alex Bloom,Toyata,Black,4,20-04-2019
-2, Ghidon ITC,Tesla,Red,2,07-03-2020
-3, Rachel ITC,Ford,Green,4,21-04-2018
+1,Alex Bloom,Toyata,Black,4,20-04-2019
+2,Ghidon ITC,Tesla,yellow,2,07-03-2020
+3,Rachel ITC,Ford,Green,4,21-04-2018
 4,Ruthy Lewis,Toyota,Yellow,4,5-07-1992
 5,Ruthy Lewis,Toyota,Yellow,4,5-07-1992
 6,Ruthy Lewis,Toyota,Yellow,4,5-07-1992
 7,Ruthy Lewis,Toyota,Yellow,4,5-07-1992
 8,Tim Palace,New_brand,Yellow,4,5-07-1992
+9,Ghidon ITC,Tesla,yellow,2,07-03-2020
+

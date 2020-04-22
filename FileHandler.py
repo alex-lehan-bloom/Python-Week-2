@@ -1,24 +1,10 @@
 import csv
 from collections import OrderedDict
 
-def get_csv_headers(file_name):
-    try:
-        csv_file = open(file_name, "r", newline='')
-    except FileNotFoundError:
-        print("Error: File not found: '{}'.".format(file_name))
-    except IOError:
-        print("Error: Could not read file: '{}'.".format(file_name))
-    except Exception as e:
-        print(e)
-        print("Error: An unknown error occurred.")
-    else:
-        file_contents = csv.DictReader(csv_file)
-        headers = next(file_contents).keys()
-        csv_file.close()
-        return headers
-    
+
 class FileHandler:
-    def load_from_csv(self, file_name):
+    @staticmethod
+    def load_from_csv(file_name):
         try:
             csv_file = open(file_name, "r", newline='')
         except FileNotFoundError:
@@ -46,7 +32,7 @@ class FileHandler:
             print("Error: An unknown error occurred.")
             return False
         else:
-            csv_writer = csv.DictWriter(csv_file, fieldnames=get_csv_headers(file_name))
+            csv_writer = csv.DictWriter(csv_file, fieldnames=self.get_csv_headers(file_name))
             id = self.get_num_rows(file_name) + 1
             try:
                 data_to_add_to_csv['id'] = id
@@ -76,9 +62,8 @@ class FileHandler:
                     line[key] = updated_info[key]
                 line = OrderedDict(line.items())
                 new_file_contents.append(line)
-        headers = get_csv_headers(file_name)
-        if id_exists == True:
-            headers = get_csv_headers(file_name)
+        if id_exists:
+            headers = self.get_csv_headers(file_name)
             try:
                 csv_file = open(file_name, "w", newline='')
             except FileNotFoundError:
@@ -118,7 +103,7 @@ class FileHandler:
                 line['id'] = int(line['id']) - 1
                 new_file_contents.append(line)
         if id_exists == True:
-            headers = get_csv_headers(file_name)
+            headers = self.get_csv_headers(file_name)
             try:
                 csv_file = open(file_name, "w", newline='')
             except FileNotFoundError:
@@ -157,7 +142,7 @@ class FileHandler:
 
     def get_num_rows_matching_search_criteria(self, file_name, field, search_criteria):
         header_exists = False
-        headers = get_csv_headers(file_name)
+        headers = self.get_csv_headers(file_name)
         for i in headers:
             if i == field:
                 header_exists = True
@@ -171,40 +156,39 @@ class FileHandler:
                 count += 1
         return count
 
-
-    def get_rows_matching_search_criteria(self, file_name, and_or='and', **kwargs):
+    def get_rows_matching_search_criteria(self, file_name, search_criteria, and_or):
         file_contents = self.load_from_csv(file_name)
-        lines_matching_search =[]
+        lines_matching_search = []
         for line in file_contents:
             if and_or.lower() == 'or':
-                for key in kwargs:
-                    if line[key] == kwargs[key]:
+                for key in search_criteria:
+                    if line[key].lower() == search_criteria[key].lower():
                         lines_matching_search.append(line)
-            if and_or.lower() == 'and':
+            else:
                 matches = True
-                for key in kwargs:
-                    if line[key] != kwargs[key]:
+                for key in search_criteria:
+                    if line[key].lower() != search_criteria[key].lower():
                         matches = False
-                if matches == True:
+                if matches:
                     lines_matching_search.append(line)
         if len(lines_matching_search) == 0:
             return False
         else:
             return lines_matching_search
 
-
-
-
-
-
-
-
-
-
-
-new_row = {'first': "New_first_name", 'last': "new_last_name"}
-my_file_handler = FileHandler()
-# field_names = get_csv_headers("csv_files/Test.csv")
-# # print(my_file_handler.remove_from_csv("csv_files/Test.csv", '2'))
-# my_file_handler.update_csv("csv_files/Test.csv", '5', new_row)
-my_file_handler.get_rows_matching_search_criteria("csv_files/Test.csv", 'and', first='Jim', last='Alex')
+    @staticmethod
+    def get_csv_headers(file_name):
+        try:
+            csv_file = open(file_name, "r", newline='')
+        except FileNotFoundError:
+            print("Error: File not found: '{}'.".format(file_name))
+        except IOError:
+            print("Error: Could not read file: '{}'.".format(file_name))
+        except Exception as e:
+            print(e)
+            print("Error: An unknown error occurred.")
+        else:
+            file_contents = csv.DictReader(csv_file)
+            headers = next(file_contents).keys()
+            csv_file.close()
+            return headers
