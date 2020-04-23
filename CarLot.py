@@ -62,11 +62,33 @@ class CarLot:
             for car_two in vehicles:
                 print(car_one['owner'])
                 print(car_two['owner'])
-                if car_one['owner'] == car_two['owner']:
+                if car_one['owner'].lower() == car_two['owner'].lower():
                     count += 1
             if count >= 2:
                 users_with_multiple_cars.append(car_one)
         users_with_multiple_cars = sorted(users_with_multiple_cars, key=lambda row: row['owner'])
         for i in users_with_multiple_cars:
             print(i)
-        return users_with_multiple_cars
+        if len(users_with_multiple_cars) > 0:
+            return users_with_multiple_cars
+        else:
+            return False
+
+    def employees_with_cars(self):
+        users = user_db.load_from_csv("csv_files/User.csv")
+        users = [user for user in users]
+        vehicles = vehicles_db.load_from_csv("csv_files/Vehicles.csv")
+        vehicles = [car for car in vehicles]
+        employees_with_cars = []
+        for car in vehicles:
+            for user in users:
+                username = "{} {}".format(user['first'], user['last'])
+                if username.lower() == car['owner'].lower():
+                    employees_with_cars.append(username)
+        employees_with_cars = list(dict.fromkeys(employees_with_cars))
+        if len(employees_with_cars) > 0:
+            return employees_with_cars
+        else:
+            return False
+
+
