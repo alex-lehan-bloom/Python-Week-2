@@ -91,4 +91,21 @@ class CarLot:
         else:
             return False
 
+    def get_employees_who_own_car_brand(self,brand):
+        users = user_db.load_from_csv("csv_files/User.csv")
+        users = [user for user in users]
+        vehicles = vehicles_db.load_from_csv("csv_files/Vehicles.csv")
+        vehicles = [car for car in vehicles]
+        employees_with_own_car_brand = []
+        for car in vehicles:
+            for user in users:
+                username = "{} {}".format(user['first'], user['last'])
+                if username.lower() == car['owner'].lower() and car['brand'] == brand:
+                    employees_with_own_car_brand.append(car['owner'])
+        employees_with_own_car_brand = list(dict.fromkeys(employees_with_own_car_brand))
+        if len(employees_with_own_car_brand) > 0:
+            return employees_with_own_car_brand
+        else:
+            return False
+
 

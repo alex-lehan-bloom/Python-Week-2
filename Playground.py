@@ -25,6 +25,8 @@ from datetime import datetime
 # CARLOT
 my_car_lot = CarLot()
 my_car_lot.employees_with_cars()
+test = my_car_lot.get_employees_who_own_car_brand("Toyota")
+print(test)
 # # my_car_lot.update_salary_by_name("csv_files/User.csv", "Alex Bloom", 8000)
 # vehicle_to_add = {'owner': 'Ruthy Lewis','brand': 'Toyota','color': 'Yellow','door_count': 4,'last_test': '5-07-1992'}
 # # my_car_lot.add_to_fleet(vehicle_to_add)
