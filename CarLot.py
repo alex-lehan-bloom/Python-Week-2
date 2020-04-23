@@ -52,3 +52,21 @@ class CarLot:
             user_db.update_csv(csv_file, user_id, updated_user_info)
             print("Salary for {} was successfully updated.".format(name))
             return True
+
+    def people_who_own_more_than_one_car(self):
+        vehicles = vehicles_db.load_from_csv("csv_files/Vehicles.csv")
+        vehicles = [car for car in vehicles ]
+        users_with_multiple_cars = []
+        for car_one in vehicles:
+            count = 0
+            for car_two in vehicles:
+                print(car_one['owner'])
+                print(car_two['owner'])
+                if car_one['owner'] == car_two['owner']:
+                    count += 1
+            if count >= 2:
+                users_with_multiple_cars.append(car_one)
+        users_with_multiple_cars = sorted(users_with_multiple_cars, key=lambda row: row['owner'])
+        for i in users_with_multiple_cars:
+            print(i)
+        return users_with_multiple_cars

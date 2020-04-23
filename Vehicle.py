@@ -2,7 +2,6 @@ from FileHandler import FileHandler
 from datetime import datetime
 
 
-
 class Vehicle:
     vehicles_db = FileHandler()
     vehicles = vehicles_db.load_from_csv('csv_files/Vehicles.csv')

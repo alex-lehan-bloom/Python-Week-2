@@ -14,20 +14,23 @@ from datetime import datetime
 # my_file_handler.get_rows_matching_search_criteria("csv_files/Test.csv", 'and', first='Jim', last='Alex')
 
 # VEHICLE
-alex_car = Vehicle("csv_files/Vehicles.csv")
-# print(alex_car.get_car_by_features('and', owner='Ghidon ITC', color='yellow'))
-print(alex_car.get_time_to_test('4'))
+# alex_car = Vehicle("csv_files/Vehicles.csv")
+# # print(alex_car.get_car_by_features('and', owner='Ghidon ITC', color='yellow'))
+# print(alex_car.get_time_to_test('4'))
 
 # LOGGER
 # log = Logger("logs", "log_file.txt")
 # log.add_to_log("My new log message")
 
 # CARLOT
-# my_car_lot = CarLot()
+my_car_lot = CarLot()
+my_car_lot.people_who_own_more_than_one_car()
 # # my_car_lot.update_salary_by_name("csv_files/User.csv", "Alex Bloom", 8000)
 # vehicle_to_add = {'owner': 'Ruthy Lewis','brand': 'Toyota','color': 'Yellow','door_count': 4,'last_test': '5-07-1992'}
 # # my_car_lot.add_to_fleet(vehicle_to_add)
 # # my_car_lot.get_fleet_size()
 # print(my_car_lot.get_fleet_size_by_brand("toyota"))
+
+
 
 
