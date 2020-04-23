@@ -123,7 +123,26 @@ class FileHandler:
         else:
             return False
 
-    def get_num_rows(self, file_name):
+    def sort_by_key(self, file_name, key, direction="up"):
+        if direction == 'down':
+            reverse_value = True
+        else:
+            reverse_value = False
+        file_contents = self.load_from_csv(file_name)
+        try:
+            sorted_file_contents = sorted(file_contents, key=lambda row: row[key], reverse=reverse_value)
+        except KeyError as e:
+            print("{} is not a key in {}."format(e, file_name)
+            return False
+        except Exception as e:
+            print(e)
+            return False
+        else:
+            return sorted_file_contents
+
+
+    @staticmethod
+    def get_num_rows(file_name):
         try:
             csv_file = open(file_name, "r", newline='')
         except FileNotFoundError:

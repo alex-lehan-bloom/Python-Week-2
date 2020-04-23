@@ -7,7 +7,9 @@ from datetime import datetime
 
 # FILEHANDLER
 # new_row = {'first': "New_first_name", 'last': "new_last_name"}
-# my_file_handler = FileHandler()
+my_file_handler = FileHandler()
+my_file_handler.sort_by_key("csv_files/Vehicles.csv", 'not_a_real_key', 'down')
+
 # # field_names = get_csv_headers("csv_files/Test.csv")
 # # # print(my_file_handler.remove_from_csv("csv_files/Test.csv", '2'))
 # # my_file_handler.update_csv("csv_files/Test.csv", '5', new_row)
@@ -23,10 +25,10 @@ from datetime import datetime
 # log.add_to_log("My new log message")
 
 # CARLOT
-my_car_lot = CarLot()
-my_car_lot.employees_with_cars()
-test = my_car_lot.get_employees_who_own_car_brand("Toyota")
-print(test)
+# my_car_lot = CarLot()
+# my_car_lot.employees_with_cars()
+# test = my_car_lot.get_employees_who_own_car_brand("Toyota")
+# print(test)
 # # my_car_lot.update_salary_by_name("csv_files/User.csv", "Alex Bloom", 8000)
 # vehicle_to_add = {'owner': 'Ruthy Lewis','brand': 'Toyota','color': 'Yellow','door_count': 4,'last_test': '5-07-1992'}
 # # my_car_lot.add_to_fleet(vehicle_to_add)
